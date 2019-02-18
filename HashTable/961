@@ -1,0 +1,13 @@
+# 961 N-Repeated Element in Size 2N Array
+# copied solution.
+# collections is a library  implements specialized container datatypes providing alternatives 
+#to Python’s general purpose built-in containers, dict, list, set, and tuple
+#https://docs.python.org/2/library/collections.html
+
+class Solution:
+    def repeatedNTimes(self, A: 'List[int]') -> 'int':
+        #copied solution
+        count = collections.Counter(A)
+        for k in count:
+            if count[k]>1:
+                return k
