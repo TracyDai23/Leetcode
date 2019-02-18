@@ -1,3 +1,3 @@
 # Leetcode
  #HashTable
-  # 706. Design HashMap
+  706. Design HashMap
