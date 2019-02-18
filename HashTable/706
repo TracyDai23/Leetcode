@@ -13,14 +13,14 @@ class MyHashMap:
         Initialize your data structure here.
         """
         self.m = 1000;
-        self.h = [None]*self.m
+        self.h = [None]*self.m #defined a list with 1000 None value. [None, None, None, ... , None]
 
     def put(self, key: 'int', value: 'int') -> 'None':
         """
         value will always be non-negative.
         """
         index = key%self.m
-        if self.h[index] == None: #Not sure why self.h[index] can work as h did not pre-defined.
+        if self.h[index] == None: #Not sure why self.h[index] can work as h did not pre-defined. Answer: it defined in __init__part
             self.h[index] = ListNode(key,value)
         else:
             cur = self.h[index]
@@ -72,7 +72,7 @@ class MyHashMap:
 # obj.remove(key)
 
 
-#OPTION 2: 
+# OPTION 2:  multi-dimension lists. 1000*1001 two-d list.
 class MyHashMap:
 
     def __init__(self):
