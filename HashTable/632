@@ -1,0 +1,22 @@
+# Condition: 1) smallest range includes at least one number from each of the k lists; 2) if two ranges equals, use the one with smaller a.
+
+# 0,4,5,9,10,12,15,18,20,22,24,26,30
+ # Thought DongDong: 1)Merge all sublist into one big sort list; 
+              2)loop range and check if all list contain at least one number in this range, and flag. e.g. range= (0,4)
+              3)Then increase step from 1 to 2, check range = [0,5] and if contains. And then keep on loop [point, point +step]
+              4)Exit when all ranges checked and return saved samllest range.
+              
+ # Thought 1: 
+
+class Solution:
+    def smallestRange(self, nums: List[List[int]]) -> List[int]:
+        print(len(nums)) #k value
+        print(len(nums[0])) # number of elements in sublist
+        k = [0]*len(nums) #Sublist position list
+        for i in range(len(nums)):
+            k[i] = len(nums[i])
+        print('k list position token from end: ', k)
+    def calculateRange(self, k, nums):
+        for i in range(len(nums)):
+            m= min(nums[i][k[i]],)
+    
