@@ -7,16 +7,38 @@
               4)Exit when all ranges checked and return saved samllest range.
               
  # Thought 1: 
+# Condition: 1) smallest range includes at least one number from each of the k lists; 2) if two ranges equals, use the one with smaller a.
+
+# 0,4,5,9,10,12,15,18,20,22,24,26,30
+ # Thought 1: 
 
 class Solution:
     def smallestRange(self, nums: List[List[int]]) -> List[int]:
         print(len(nums)) #k value
         print(len(nums[0])) # number of elements in sublist
-        k = [0]*len(nums) #Sublist position list
+        p = [0]*len(nums) #Sublist position list
         for i in range(len(nums)):
-            k[i] = len(nums[i])
-        print('k list position token from end: ', k)
-    def calculateRange(self, k, nums):
-        for i in range(len(nums)):
-            m= min(nums[i][k[i]],)
+            p[i] = len(nums[i])-1
+        print('k list position token from end: ', p)
+        # print(nums[1][2])
+        newList = []
+        range=[-inf,inf]
+        while sum(p) >0:
+            for i in range(len(nums)):
+                # print( nums[i][p[i]])
+                newList.append(nums[i][p[i]])
+                i=i-1
+            # print("newList: ",newList)
+            
+    def calculateRange(self, list):
+        m=min(list)
+        x=max(list)
+        range = [m,x]
+        # call movePointer function to check if need to move pointers
+        return range
+    
+    def movePointer(range,p):
+        
+
+    
     
