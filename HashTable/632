@@ -18,31 +18,64 @@
 
 class Solution:
     def smallestRange(self, nums: List[List[int]]) -> List[int]:
-        print(len(nums)) #k value
-        print(len(nums[0])) # number of elements in sublist
-        p = [0]*len(nums) #Sublist position list
+        p = [0]*len(nums)
         for i in range(len(nums)):
-            p[i] = len(nums[i])-1
-        print('k list position token from end: ', p)
-        # print(nums[1][2])
-        newList = []
-        range=[-inf,inf]
-        while sum(p) >0:
-            for i in range(len(nums)):
-                # print( nums[i][p[i]])
-                newList.append(nums[i][p[i]])
-                i=i-1
-            # print("newList: ",newList)
-            
-    def calculateRange(self, list):
-        m=min(list)
-        x=max(list)
-        range = [m,x]
-        # call movePointer function to check if need to move pointers
-        return range
-    
-    def movePointer(range,p):
+                p[i] = len(nums[i])-1
+        # print('p: ',p)
+        sr=[-100000,200000]
         
+        def calculateRange(alist):
+            m = min(alist)
+            x = max(alist)
+            r = [m,x-m] #range[0] is range start point, range[1]is rangewide
+            return r
+        def movePointer(m,x,p,nums):
+            no_move =0
+            m=int(m)
+            x=int(x)
+            for i in range(len(p)):
+                    if m< nums[i][p[i]-1] <= x:
+                        if p[i]>0:
+                            p[i]=p[i]-1
+                            no_move =1
 
-    
+            if no_move==0:
+                    for i in range(len(p)):
+                            if p[i]>0:
+                                    p[i] = p[i]-1
+            return p
+        
+        while sum(p)>0: #p location index counts from largest to smallest.
+                newList = []
+                for i in range(len(nums)):
+                        newList.append(nums[i][p[i]])
+                        i=i-1
+                #For loop finished the preparation of newList input for calculate function.
+                print('current_newList: ',newList)
+
+                # Calculation starts from here
+         
+                cr=calculateRange(newList)
+                print('current_range: ',cr)
+                x=sum(sr)
+                p=movePointer(sr[0],x,p,nums)
+                print('currnet_pointer: ',p)
+                if sr[1]>cr[1] or (sr[1]==cr[1] and sr[0]>cr[0]):
+                        sr=cr
+                print('current smallest range: ',sr)
+        while sum(p)==0:
+                newList = []
+                for i in range(len(nums)):
+                        newList.append(nums[i][0])
+                        i = i-1
+                print('current_newList: ',newList)      
+                cr = calculateRange(newList)
+                print('current_range: ',cr)
+                if (sr[1]>cr[1] or (sr[1] == cr[1] and sr[0]>cr[0])):
+                        sr=cr
+                print('current smallest range: ',sr)
+                break
+        srange =[sr[0],sr[0]+sr[1]]
+        return srange
+
     
