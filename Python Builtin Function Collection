@@ -1,0 +1,11 @@
+# Python built-in function collection
+
+# enumerate(): bring back index and value of list. Really good for N-Array
+# example:
+my_list = [['a','b','c'],['d']]
+for i,r in enumerate(my_list):
+  print('i, r:', i, r)
+
+#OUTPUT: 
+# i, r: 0 ['a','b','c']
+# i, r: 1['d']
