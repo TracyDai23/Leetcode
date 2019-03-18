@@ -1,3 +1,25 @@
+# Points: 
+#1. data structure: set example {'a','.'}
+#2. DFS: depth-first search, an algorithm from Graph portion.
+
+# Solutions 1: Recursion
+
+class Solution(object):
+    def isMatch(self, text, pattern):
+        if not pattern:
+            return not text
+
+        first_match = bool(text) and pattern[0] in {text[0], '.'} # {'a','.'} this is a set, not dictionary.
+
+        if len(pattern) >= 2 and pattern[1] == '*':
+            return (self.isMatch(text, pattern[2:]) or
+                    first_match and self.isMatch(text[1:], pattern))
+        else:
+            return first_match and self.isMatch(text[1:], pattern[1:])
+
+
+
+# My own unfinished first attempt with 3 days efforts.
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         #standardize p: 1)"X*.*X*" ; 2) "a*a"; 3)".."; 
