@@ -47,17 +47,37 @@ class Solution:
                 p=p[1:]
                 s=s[1:]
             elif i>= len(p)-1 and p[i] =='*': #need to return False when * has no "." or character ahead. 
+                print('* can not be the first of p')
                 return False
             elif p[i] =='*':
                 adv=p[i+1]
-                if adv == '.' and i+2<len(p):
-                    
+                if i+2<len(p) and adv == '.': # example: s = 'bbaaaaa', p='bb.*'
+                    x=i+2
+                    new_s=''
+                    while x<=len(p)-1:
+                        if p[x] == '*' or p[x]=='.':
+                            break
+                        else: 
+                            new_s += p[x] 
+                            x+=1
+                    if new_s not in s:
+                        print('substring check after .*')
+                        return False
+                    else:
+                        s= s[x:]
+                        # p=p[]
+                elif adv=='.' and i+2 >= len(p):
+                    return True
                 elif adv =='*': #for p has "**" pattern, return False
+                    print('** check')
                     return False
                 else:
                     while len(s)>0 and s[j]==adv:
                         s=s[1:]
-                    if s!=p:
-                        return False
+                    p=p[2:]
+        if s!=p:
+            print('general check')
+            return False
                     
         return True  
+                    
