@@ -25,3 +25,15 @@ import functools
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         return functools.reduce(lambda x, y: x ^ y, nums)
+
+    
+class Solution(object):
+def singleNumber(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    a = 0
+    for i in nums:
+        a ^= i
+    return a
