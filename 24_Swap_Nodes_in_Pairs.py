@@ -1,3 +1,6 @@
+# Resolved 80.95%
+# Corner case: need to consider if linked list does not have even nodes. Corrected at line 23. 
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):
@@ -8,6 +11,8 @@ class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
         if not head:
             return None
+        if not head.next:
+            return head
         
         current = head
         print(current)
@@ -15,7 +20,7 @@ class Solution:
         print(dummy)
         slow = current
         fast = current.next
-        while current:
+        while current and current.next:
             slow.next = current.next
             slow = current
             fast = current.next
