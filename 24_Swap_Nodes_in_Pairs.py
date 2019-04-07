@@ -1,6 +1,8 @@
 # Resolved 80.95%
 # Corner case: need to consider if linked list does not have even nodes. Corrected at line 23. 
 
+# Recursive solution listed after the Iterative solution.
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, x):
@@ -34,3 +36,15 @@ class Solution:
             #print('current val:',current.val)
             
         return dummy
+
+    
+# Recursion Method after reading other's discussion
+
+class Solution(object):
+    def swapPairs(self, head):
+        if not head or not head.next: return head
+        new_start = head.next.next
+        head, head.next = head.next, head
+        head.next.next = self.swapPairs(new_start)
+        return head
+        
