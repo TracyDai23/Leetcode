@@ -30,3 +30,19 @@ class Solution:
             self.helper(root.left,res)
             res.append(root.val)
             self.helper(root.right,res)
+
+  # Iterate solution: 
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        stack = []
+        solution = []
+        node = root
+        while node or len(stack)>0:
+            if node!= None:
+                stack.append(node) #In this step, stack stores node object, not node value
+                node = node.left
+            else: 
+                node = stack.pop()
+                solution.append(node.val)
+                node = node.right
+        return solution
