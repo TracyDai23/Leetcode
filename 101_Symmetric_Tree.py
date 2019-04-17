@@ -42,3 +42,55 @@ class Solution:
                 h=[]
                 l=[]
         return True
+    
+# My Recursion solution: 61%
+# Logic: inorder traversal,  fill in 'n' when null value present. Tedious corner cases.
+# TC: O(N)
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        self.res =[]
+        if not root: return True
+        else:
+            l= self.getVal(root)
+        print(l)
+        return l == l[::-1]
+        
+    def getVal(self,root):
+        if root and root.left and root.right:
+            self.getVal(root.left)
+            self.res.append(root.val)
+            self.getVal(root.right)
+        elif root and (( not root.left and root.right) or (not root.right and root.left)):
+            self.getVal(root.left)
+            if not root.left: self.res.append('n')
+            else:self.res.append(root.left.val)
+            self.res.append(root.val)
+            if not root.right: self.res.append('n')
+            else:self.res.append(root.right.val)
+            self.getVal(root.right)
+        elif root:
+            self.res.append(root.val)
+        return self.res
+
+
+
+# Other's recursion solution: 17% very clear and concise
+class Solution:
+    def isSymmetric(self, root):
+        if root is None:
+            return True
+        else:
+            return self.isMirror(root.left, root.right)
+
+    def isMirror(self, left, right):
+        if left is None and right is None:
+            return True
+        if left is None or right is None:
+            return False
+
+        if left.val == right.val:
+            outPair = self.isMirror(left.left, right.right)
+            inPiar = self.isMirror(left.right, right.left)
+            return outPair and inPiar
+        else:
+            return False
