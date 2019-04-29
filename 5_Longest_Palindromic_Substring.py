@@ -1,5 +1,5 @@
 # 83.37%
-# Time complexity: O(N)
+# Time complexity: O(N^2) because line 12 list in operation is an O(n) statement.
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
