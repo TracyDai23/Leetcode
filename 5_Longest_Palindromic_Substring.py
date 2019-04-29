@@ -29,6 +29,7 @@ class Solution:
 class Solution:
     #Manacher algorithm
     #http://en.wikipedia.org/wiki/Longest_palindromic_substring
+    #中文版说明： https://www.cnblogs.com/egust/p/4580299.html
     
     def longestPalindrome(self, s):
         # Transform S into T.
