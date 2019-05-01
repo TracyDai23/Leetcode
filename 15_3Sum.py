@@ -1,5 +1,7 @@
 # 2nd try with dictionary: 23.59% 
 # take-aways: rst = list(dict.fromkeys((map(tuple, rst)))) # remove duplicates from list
+# Other's solution: O(n*n), used two pointer, and very similar to question 11
+
 
 # 1st try: time limit exceed
 class Solution:
@@ -38,3 +40,28 @@ class Solution:
         rst = list(dict.fromkeys((map(tuple, rst)))) # remove duplicates from list
         
         return rst
+
+    
+# Other's solution: two pointer, O(n*n)
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        nums.sort()
+        for i in range(len(nums)-2):
+            if i > 0 and nums[i] == nums[i-1]: #ignore duplicate elements
+                continue
+            l, r = i+1, len(nums)-1
+            while l < r:
+                s = nums[i] + nums[l] + nums[r]
+                if s < 0:
+                    l +=1 
+                elif s > 0:
+                    r -= 1
+                else:
+                    res.append((nums[i], nums[l], nums[r])) # when s == 0, then it's a solution.
+                    while l < r and nums[l] == nums[l+1]: # ignore duplicate elements on left end
+                        l += 1
+                    while l < r and nums[r] == nums[r-1]:# ignore duplicate elements on right end
+                        r -= 1
+                    l += 1; r -= 1 # move pointer.
+        return res 
