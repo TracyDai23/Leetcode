@@ -19,7 +19,7 @@ class Solution:
             if len(s) == 2*n:
                 output.append(s)
                 print(output)
-                return
+                return # 此处加return比不加return会快一些，因为当满足len(s) ==2*n 的时候，就直接跳出了当前recursion loop. 而不执行下面的if left <n, 和 if right<left了。 在不加return的时候会执行后两句，然后结束（因为没有return，默认为return none）
             if left<n:
                 trec(s+'(',left+1,right)
             if right <left:
