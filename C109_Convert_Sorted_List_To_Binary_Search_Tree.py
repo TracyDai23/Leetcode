@@ -1,5 +1,6 @@
 # read answer
 # BTS, 重点是BTS的构建， 难点是linked list怎么用two pointer approach找mid point
+# recursion 的关键： 找到base case。 在这个题里，是line 44-45.当node等于middle的位置的时候，完成当前level的recursion
 
 class Solution:
     def findMiddle(self, head):
@@ -39,7 +40,7 @@ class Solution:
         # The mid becomes the root of the BST.
         node = TreeNode(mid.val)
 
-        # Base case when there is just one element in the linked list
+        # Base case to return res when the current level recursion is done. 
         if head == mid:
             return node
 
