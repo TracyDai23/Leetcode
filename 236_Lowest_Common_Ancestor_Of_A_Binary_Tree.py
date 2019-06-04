@@ -6,6 +6,42 @@
 #         self.right = None
 
 
+# My third trial after go through other's result: wrong answer
+# 错误原因是 line 41 没有写return dfs(root,p,q)， 而只写了dfs(root, p,q),所以没有输出任何东西。
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        #step1: find p and q;
+        #step2: source back to find common ancestor
+        self.res = root
+        # self.left = None
+        # self.right = None
+        def dfs(root,p,q):
+            if not root:
+                return None
+            
+            # base case:
+            if root.val == p.val or root.val == q.val:
+                return root
+            
+            # Major logic solution along with Check condition !!
+            left = dfs(root.left,p,q)
+            right = dfs(root.right,p,q)
+            # print(self.left, self.right, self.res)
+            # Check condition
+            if left and right:
+                return root
+            elif not right:
+                return left
+            elif not left:
+                return right
+
+                
+        
+        return dfs(root,p,q)
+
+        
+    
 
 # My second trial:
 class Solution:
