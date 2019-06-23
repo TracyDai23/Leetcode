@@ -1,4 +1,5 @@
 # 计数题通常都是动态规划。
+# 很好的recursion 和 DP 思路说明： https://www.youtube.com/watch?v=fmpP5Ll0Azc
 
 # My own solution: Time limit exceed.
 class Solution:
