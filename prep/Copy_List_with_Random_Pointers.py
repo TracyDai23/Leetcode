@@ -16,3 +16,29 @@ class Solution(object):
             dic[n].random = dic.get(n.random)
             n = n.next
         return dic.get(head)
+
+    
+# Xudong Solution
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        dic = {}
+        res = curr = Node(0,None,None)
+        curr.next = head
+       
+        while head:
+           
+            if head:
+                if head not in dic:
+                    dic[head] = Node(head.val,None,None)
+                curr.next = dic[head]
+
+            if head.random:
+                if head.random not in dic:
+                    dic[head.random] = Node(head.random.val,None,None)
+                curr.next.random = dic[head.random]
+               
+            head = head.next
+            curr = curr.next            
+
+               
+        return res.next
