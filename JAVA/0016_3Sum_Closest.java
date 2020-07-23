@@ -1,3 +1,4 @@
+// Self resolved based on 0015. 
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
         if (nums == null || nums.length <= 2) {
@@ -11,19 +12,19 @@ class Solution {
             int low = i+1, high = nums.length -1, sum = target -nums[i];
             
             while(low < high) {
-                if (nums[low] + nums[high] - sum <diff){
+                
+                if (Math.abs(nums[low] + nums[high] - sum) <Math.abs(diff)){
                         diff = nums[low] + nums[high] - sum;
-                        while (low < high && nums[low] == nums[low+1]) low++;
-                        while (low < high && nums[high] == nums[high-1]) high--;
                     }
                 if(nums[low] + nums[high] - sum >0) {
                     high--;
                 } else if (nums[low] + nums[high] - sum <0){
                     low++;
                 } else {
+                    System.out.println("Landed here.");
                     return target;
                 }
-                    
+                // System.out.println("i: "+i +", low: "+low +", high: "+high+", sum: "+sum+", diff: "+diff);
             }
         }
         return diff+target;
