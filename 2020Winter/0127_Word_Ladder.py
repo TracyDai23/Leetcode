@@ -1,4 +1,4 @@
-[BFS] Learnt from Solution, and coded myself.
+#[BFS] Learnt from Solution, and coded myself.
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList: 
